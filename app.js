@@ -2,7 +2,11 @@
 // every file is a module by default
 // common js, every file is module (by default)
 
-sayHi("idris");
-sayHi(secret);
-sayHi(john);
-sayHi(peter);
+const names = require("./4-names");
+console.log(names);
+const greet = require("./5-utils");
+
+greet("idris");
+//sayHi(secret);
+greet(names.john);
+greet(names.peter);
