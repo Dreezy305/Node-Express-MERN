@@ -9,5 +9,6 @@ console.log(first, second);
 // writeFileSync writes a new file
 writeFileSync(
   "./content/result-sync.txt",
-  `Here is the result : ${first}, ${second}`
+  `Here is the result : ${first}, ${second}`,
+  { flag: "a" }
 );
