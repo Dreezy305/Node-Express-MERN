@@ -1,14 +1,22 @@
-// file system (FS) module
-const { readFileSync, writeFileSync } = require("fs");
+// file system (FS) module async
+const { readFile, writeFile } = require("fs");
 
-// readFileSync reads content of a file
-const first = readFileSync("./content/first.txt", "utf-8");
-const second = readFileSync("./content/second.txt", "utf-8");
-console.log(first, second);
-
-// writeFileSync writes a new file
-writeFileSync(
-  "./content/result-sync.txt",
-  `Here is the result : ${first}, ${second}`,
-  { flag: "a" }
-);
+readFile("./content/first.txt", "utf-8", (err, result) => {
+  if (err) {
+    console.log(err);
+    return;
+  }
+  const first = result;
+  readFile("./content/second.txt", "utf-8", (err, result) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    const second = result;
+    writeFile(
+      "/contentresult-sync.txt",
+      "utf-8",
+      `Here is the result : ${first}, ${second}`
+    );
+  });
+});
