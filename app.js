@@ -14,9 +14,15 @@ readFile("./content/first.txt", "utf-8", (err, result) => {
     }
     const second = result;
     writeFile(
-      "/contentresult-sync.txt",
-      "utf-8",
-      `Here is the result : ${first}, ${second}`
+      "./content/result-async.txt",
+      `Here is the result : ${first}, ${second}`,
+      (err, result) => {
+        if (err) {
+          console.log(err);
+          return;
+        }
+        console.log(result);
+      }
     );
   });
 });
