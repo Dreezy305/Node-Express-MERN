@@ -1,14 +1,15 @@
-// event programming
-const EventEmitter = require("events");
+const http = require("http");
 
-const customEmitter = new EventEmitter();
+// const server = http.createServer((req, res) => {
+//   res.end('Welcome')
+// })
 
-customEmitter.on("response", () => {
-  console.log("data recieved");
+// Using Event Emitter API
+const server = http.createServer();
+// emits request event
+// subcribe to it / listen for it / respond to it
+server.on("request", (req, res) => {
+  res.end("Welcome");
 });
 
-customEmitter.on("response", () => {
-  console.log("not good enough");
-});
-
-customEmitter.emit("response");
+server.listen(5000);
